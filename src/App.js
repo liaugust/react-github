@@ -1,8 +1,16 @@
+import React from "react";
+
+import { Navbar } from "./Navbar/Navbar";
+import { Home } from "./pages/Home/Home";
+
 const App = () => {
   return (
-    <div className='container pt-4'>
-      <h1>Hello world!</h1>
-    </div>
+    <>
+      <Navbar />
+      <div className='container pt-4'>
+        <Home />
+      </div>
+    </>
   )
 }
 

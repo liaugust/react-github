@@ -41,10 +41,9 @@ export const GithubState = ({ children }) => {
 
   const getRepos = async name => {
     setLoading()
-    // const reposPerPage = ${reposPerPage > 0 ? 'per_page=' + reposPerPage : ''}
 
     const response = await axios.get(
-      withCreds(`https://api.github.com/users/${name}/repos&`)
+      withCreds(`https://api.github.com/users/${name}/repos?per_page=5&`)
     )
 
     dispatch({ type: GET_REPOS, payload: response.data })
@@ -58,12 +57,12 @@ export const GithubState = ({ children }) => {
     dispatch({ type: SET_LOADING })
   }
 
-  const { user, users, repo, loading } = state
+  const { user, users, repos, loading } = state
 
   return (
     <GithubContext.Provider value={{
       search, setLoading, getRepos, getUser, clearUsers,
-      user, users, repo, loading
+      user, users, repos, loading
     }}>
       {children}
     </GithubContext.Provider>
